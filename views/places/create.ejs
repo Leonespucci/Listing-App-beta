@@ -1,0 +1,65 @@
+<% layout('layouts/app') %>
+<h1 class="text-center">Tambahkan Tempat</h1>
+<div class="col-6 offset-3 mb-5">
+    <form action="/places/create" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="title">Judul : </label>
+        <input type="text" name="title" id="title" class="form-control" required>
+        <div class="valid-feedback">
+            Terlihat Keren!
+                  </div>
+              
+                <div class="invalid-feedback">
+                    Kolom Ini Tidak Boleh Kosong!
+                  </div>  
+    </div>
+        <div class="mb-3">
+            <label for="price">Harga : </label>
+            <input type="number" name="price" id="price" class="form-control" required>
+            <div class="valid-feedback">
+                Terlihat Keren!
+                      </div>
+                  
+                    <div class="invalid-feedback">
+                        Kolom Ini Tidak Boleh Kosong!
+                      </div>
+        </div>
+        <div class="mb-3">
+            <label for="description">Deskripsi : </label>
+            <textarea name="description" id="description" cols="30" rows="10" class="form-control" required></textarea>
+            <div class="valid-feedback">
+                Terlihat Keren!
+                      </div>
+                  
+                    <div class="invalid-feedback">
+                        Kolom Ini Tidak Boleh Kosong!
+                      </div>
+        </div>
+        <div class="mb-3">            
+            <label for="location">Lokasi : </label>
+            <input type="text" name="location" id="location" class="form-control" required>
+            <div class="valid-feedback">
+                Terlihat Keren!
+                      </div>
+                  
+                    <div class="invalid-feedback">
+                        Kolom Ini Tidak Boleh Kosong!
+                      </div>
+        </div>
+        <div class="mb-3">
+            <label for="image">Image Url : </label>
+            <input type="text" name="image" id="image" class="form-control" required>
+            <div class="valid-feedback">
+                Terlihat Keren!
+                      </div>
+                  
+                    <div class="invalid-feedback">
+                        Kolom Ini Tidak Boleh Kosong!
+                      </div>   
+        </div>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-dark">Buat!</button>
+        </div>
+    </form>
+</div>
+

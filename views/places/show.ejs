@@ -1,0 +1,101 @@
+<% layout('layouts/app') %>
+
+<div class="row mb-5">
+    <div class="col-6">
+        <div class="card">
+            <img src="<%= place.image %>" alt="<%= place.title %>">
+        <div class="card-body">
+            <h5 class="card-title"><%= place.title %></h5>
+            <p class="card-text"><%= place.description %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= place.location %></li>
+            <li class="list-group-item">Rp.<%= place.price %></li>
+        </ul>
+        <div class="card-body">
+            <a href="/places/<%= place._id %>/edit" class="btn btn-warning my-2">Edit</a>
+            <form action="/places/<%= place._id %>?_method=DELETE" method="post" style="display: inline!important;">
+                <button type="submit" class="btn btn-danger my-2">Hapus</button>
+                </form>
+                <a href="/places" class="btn btn-secondary my-2">Lihat Semua Tempat!</a>
+        </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <h3>Tinggalkan Sebuah Riview</h3>
+        <form action="/places/<%= place._id %>/reviews" method="post" class="needs-validation" onsubmit="return validateSelected()" novalidate>
+            <div class="mb-3">
+                <!-- <label for="rating">Rating</label>
+                <input type="range" name="rating" id="rating" min="1" max="5" class="form-range"> -->
+                <select name="rating" id="rating" class="form-select">
+                    <option selected value="kosong">Pilih Rating!</option>
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                </select>
+                <div class="valid-feedback">
+                    Pastikan lagi rating yang anda pilih sesuai! 
+                          </div>
+            </div>            
+            <div class="mb-3">
+                <label for="body">Riview</label>
+                <textarea name="body" id="body" minlength="3" cols="10" rows="5" class="form-control" required></textarea>
+                <div class="valid-feedback">
+                    Terlihat Keren!
+                          </div>
+                      
+                        <div class="invalid-feedback">
+                            Kolom Ini Tidak Boleh Kosong atau kurang dari 3 kata!
+                          </div>   
+            </div>
+            <button type="submit" class="btn btn-success">Tambahkan!</button>
+        </form>
+        <h4 class="text-secondary mt-2 mb-2"> Review :</h4>
+        <% if (place.reviews == "") { %>
+            <h4 class="text-center" style="margin-top: 80px;">Belum Ada Review</h4>
+        <small>
+            <p class="text-secondary text-center">Jadilah Reviewer Pertama!</p>
+        </small>
+            <% } %>
+        <% for(const review of place.reviews) { %>
+            <div class="card mb-3 mt-3">
+                <div class="card-body">
+                    <small>
+                        <h5 class="card-title text-small">Anonim</h5>
+                    </small>
+                    <% if (review.rating === 1) { %>
+                        <h5 class="card-title">⭐</h5>
+                    <% } %>
+                    <% if (review.rating === 2) { %>
+                        <h5 class="card-title">⭐⭐</h5>
+                    <% } %>
+                    <% if (review.rating === 3) { %>
+                        <h5 class="card-title">⭐⭐⭐</h5>
+                    <% } %>
+                    <% if (review.rating === 4) { %>
+                        <h5 class="card-title">⭐⭐⭐⭐</h5>
+                    <% } %>
+                    <% if (review.rating === 5) { %>
+                        <h5 class="card-title">⭐⭐⭐⭐⭐</h5>
+                    <% } %>
+                    <p class="card-text"><%= review.body %></p>
+                    <form action="/places/<%= place._id %>/reviews/<%= review._id %>?_method=DELETE" method="post" style="display: inline!important;">
+                    <button type="submit" class="btn btn-danger">Hapus!</button>
+                    </form>
+                </div>
+            </div>
+            <% } %>
+    </div>
+</div>
+
+<script>
+    function validateSelected(){
+        let selectedOption = document.querySelector('select[name="rating"]').value
+        if(selectedOption === "kosong"){
+            return false
+        }
+        return true
+    }
+</script>
