@@ -69,7 +69,7 @@ app.use((req, res, next) => {
 
 //Route 
 app.get('/', (req, res) => {
-    res.render('home')
+    res.redirect('places')
 })
 
 // app.get('/register', async (req,res) => {
@@ -87,7 +87,7 @@ app.use('/places', require('./routes/places'))
 // Route review
 app.use('/places/:place_id/reviews', require('./routes/reviews'))
 // Route Register/Login
-app.use('/', require('./routes/users'))
+app.use('/', require('./routes/auth'))
 
 
 

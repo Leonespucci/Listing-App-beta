@@ -1,21 +1,10 @@
 <% layout('layouts/app') %>
-<h3 class="text-center">Daftar</h3>
+<h3 class="text-center">Login</h3>
 <div class="col-6 offset-3 mb-5">
-    <form action="/register" method="post" class="needs-validation" novalidate>
+    <form action="/login" method="post" class="needs-validation" novalidate>
         <div class="mb-3 mt-3">
             <label for="username">Username :</label>
             <input type="text" id="username" name="username" class="form-control" required>    
-            <div class="valid-feedback">
-                Terlihat Keren!
-                      </div>
-                  
-                    <div class="invalid-feedback">
-                        Kolom Ini Tidak Boleh Kosong!
-                      </div>  
-        </div>
-        <div class="mb-3 mt-3">
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" class="form-control" required>    
             <div class="valid-feedback">
                 Terlihat Keren!
                       </div>
@@ -35,7 +24,7 @@
                     Kolom Ini Tidak Boleh Kosong!
                   </div>  
         </div>
-        <button type="submit" class="btn btn-secondary">Daftar!</button>
+        <button type="submit" class="btn btn-secondary">Login</button>
     </form>
 </div>
 
